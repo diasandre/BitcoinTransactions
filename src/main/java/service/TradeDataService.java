@@ -8,7 +8,10 @@ import java.util.Collection;
 public interface TradeDataService {
 
     Trades getFormattedData();
+
     Collection<TradeItem> getBiggestTrades(String tradeType, int limit);
-    Double getAverage(String tradeType);
+    double getAverage(String tradeType);
+    double getMedian(String tradeType);
+    double getDeviation(String tradeType);
 
 }

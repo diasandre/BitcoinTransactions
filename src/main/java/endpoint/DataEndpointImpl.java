@@ -76,9 +76,28 @@ public class DataEndpointImpl implements DataEndpoint {
 
     @GET
     @Path("/{type}/average")
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAverage(@PathParam("type") String type) {
-        return Response.status(200).entity(tradeDataService.getAverage(type)).build();
+        String content = gson.toJson(tradeDataService.getAverage(type));
+        return Response.status(200).entity(content).build();
+
+    }
+
+    @GET
+    @Path("/{type}/median")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMedian(@PathParam("type") String type) {
+        String content = gson.toJson(tradeDataService.getMedian(type));
+        return Response.status(200).entity(content).build();
+
+    }
+
+    @GET
+    @Path("/{type}/deviation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDeviation(@PathParam("type") String type) {
+        String content = gson.toJson(tradeDataService.getDeviation(type));
+        return Response.status(200).entity(content).build();
 
     }
 }

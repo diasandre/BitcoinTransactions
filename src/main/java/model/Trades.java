@@ -8,12 +8,12 @@ import java.util.Objects;
 public class Trades {
     private Collection<TradeItem> largest_sell;
     private Collection<TradeItem> largest_buy;
-    private Double average_sell;
-    private Double average_buy;
-    private Double median_sell;
-    private Double median_buy;
-    private Double deviation_sell;
-    private Double deviation_buy;
+    private double average_sell;
+    private double average_buy;
+    private double median_sell;
+    private double median_buy;
+    private double deviation_sell;
+    private double deviation_buy;
 
     public Trades setLargest(String tradeType, Collection<TradeItem> largest) {
         if (tradeType.equals(TradeType.BUY.getValue())) {
@@ -25,7 +25,7 @@ public class Trades {
         }
     }
 
-    public Trades setAverage(String tradeType, Double value) {
+    public Trades setAverage(String tradeType, double value) {
         if (tradeType.equals(TradeType.BUY.getValue())) {
             setAverage_buy(value);
             return this;
@@ -55,56 +55,56 @@ public class Trades {
         return this;
     }
 
-    public Double getAverage_sell() {
+    public double getAverage_sell() {
         return average_sell;
     }
 
-    public Trades setAverage_sell(Double average_sell) {
+    public Trades setAverage_sell(double average_sell) {
         this.average_sell = average_sell;
         return this;
     }
 
-    public Double getAverage_buy() {
+    public double getAverage_buy() {
         return average_buy;
     }
 
-    public Trades setAverage_buy(Double average_buy) {
+    public Trades setAverage_buy(double average_buy) {
         this.average_buy = average_buy;
         return this;
     }
 
-    public Double getMedian_sell() {
+    public double getMedian_sell() {
         return median_sell;
     }
 
-    public Trades setMedian_sell(Double median_sell) {
+    public Trades setMedian_sell(double median_sell) {
         this.median_sell = median_sell;
         return this;
     }
 
-    public Double getMedian_buy() {
+    public double getMedian_buy() {
         return median_buy;
     }
 
-    public Trades setMedian_buy(Double median_buy) {
+    public Trades setMedian_buy(double median_buy) {
         this.median_buy = median_buy;
         return this;
     }
 
-    public Double getDeviation_sell() {
+    public double getDeviation_sell() {
         return deviation_sell;
     }
 
-    public Trades setDeviation_sell(Double deviation_sell) {
+    public Trades setDeviation_sell(double deviation_sell) {
         this.deviation_sell = deviation_sell;
         return this;
     }
 
-    public Double getDeviation_buy() {
+    public double getDeviation_buy() {
         return deviation_buy;
     }
 
-    public Trades setDeviation_buy(Double deviation_buy) {
+    public Trades setDeviation_buy(double deviation_buy) {
         this.deviation_buy = deviation_buy;
         return this;
     }
