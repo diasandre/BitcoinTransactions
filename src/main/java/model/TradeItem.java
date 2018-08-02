@@ -1,12 +1,13 @@
 package model;
 
-import constants.TradeType;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 public class TradeItem {
     private Long date;
-    private float amount;
-    private float price;
-    private TradeType type;
+    private BigDecimal amount;
+    private BigDecimal price;
+    private String type;
     private Long tid;
 
     public Long getDate() {
@@ -18,29 +19,29 @@ public class TradeItem {
         return this;
     }
 
-    public float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public TradeItem setAmount(float amount) {
+    public TradeItem setAmount(BigDecimal amount) {
         this.amount = amount;
         return this;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public TradeItem setPrice(float price) {
+    public TradeItem setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
 
-    public TradeType getType() {
+    public String getType() {
         return type;
     }
 
-    public TradeItem setType(TradeType type) {
+    public TradeItem setType(String type) {
         this.type = type;
         return this;
     }
@@ -58,23 +59,16 @@ public class TradeItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         TradeItem tradeItem = (TradeItem) o;
-
-        if (Float.compare(tradeItem.getAmount(), getAmount()) != 0) return false;
-        if (Float.compare(tradeItem.getPrice(), getPrice()) != 0) return false;
-        if (getDate() != null ? !getDate().equals(tradeItem.getDate()) : tradeItem.getDate() != null) return false;
-        if (getType() != tradeItem.getType()) return false;
-        return getTid() != null ? getTid().equals(tradeItem.getTid()) : tradeItem.getTid() == null;
+        return Objects.equals(getDate(), tradeItem.getDate()) &&
+                Objects.equals(getAmount(), tradeItem.getAmount()) &&
+                Objects.equals(getPrice(), tradeItem.getPrice()) &&
+                Objects.equals(getType(), tradeItem.getType()) &&
+                Objects.equals(getTid(), tradeItem.getTid());
     }
 
     @Override
     public int hashCode() {
-        int result = getDate() != null ? getDate().hashCode() : 0;
-        result = 31 * result + (getAmount() != +0.0f ? Float.floatToIntBits(getAmount()) : 0);
-        result = 31 * result + (getPrice() != +0.0f ? Float.floatToIntBits(getPrice()) : 0);
-        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
-        result = 31 * result + (getTid() != null ? getTid().hashCode() : 0);
-        return result;
+        return Objects.hash(getDate(), getAmount(), getPrice(), getType(), getTid());
     }
 }

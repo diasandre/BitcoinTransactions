@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AndreBitcoin" />
+        <module name="RESTfulExample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AndreBitcoin" target="1.8" />
+      <module name="RESTfulExample" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,7 @@
+endpoint\DataEndpoint.class
+Main.class
+model\TradeItem.class
+constants\TradeType.class
+model\Trades.class
+service\TradeDataService.class
+api\ApiConsumer.class
