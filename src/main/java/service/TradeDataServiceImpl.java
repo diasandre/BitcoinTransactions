@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TradeDataServiceImpl implements TradeDataService {
     private Collection<TradeItem> trades;
@@ -21,44 +22,51 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public Collection<TradeItem> getBiggestTrades(String tradeType, int limit) {
-        if (isValid(tradeType)) {
-            return trades.stream()
-                    .filter((item -> item.getType().equals(tradeType)))
+        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+        if (filteredTrades != null) {
+            return filteredTrades
                     .sorted(Comparator.comparing(TradeItem::getValue).reversed())
                     .limit(limit)
                     .collect(Collectors.toList());
+        } else {
+            return null;
         }
-        return null;
-    }
-
-    private boolean isValid(String tradeType) {
-        return tradeType.equals(TradeType.SELL.getValue()) || tradeType.equals(TradeType.SELL.getValue());
     }
 
     public double getAverage(String tradeType) {
-        return trades.stream()
-                .filter((item -> item.getType().equals(tradeType)))
-                .mapToDouble(item -> item.getValue().doubleValue())
-                .average().orElse(Double.NaN);
+        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+        if (filteredTrades != null) {
+            return filteredTrades
+                    .mapToDouble(item -> item.getValue().doubleValue())
+                    .average().orElse(Double.NaN);
+        } else {
+            return Double.NaN;
+        }
+
     }
 
     public double getMedian(String tradeType) {
-        List<BigDecimal> collect = trades.stream()
-                .filter((item -> item.getType().equals(tradeType)))
-                .map(TradeItem::getValue)
-                .collect(Collectors.toList());
+        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+        if (filteredTrades != null) {
+            List<BigDecimal> mappedTrades = filteredTrades
+                    .map(TradeItem::getValue)
+                    .collect(Collectors.toList());
 
-        BigDecimal[] values = collect.toArray(new BigDecimal[collect.size()]);
+            BigDecimal[] values = mappedTrades.toArray(new BigDecimal[mappedTrades.size()]);
 
-        Arrays.sort(values);
-        int middle = values.length / 2;
-        BigDecimal medianValue;
-        if (values.length % 2 == 1)
-            medianValue = values[middle];
-        else
-            medianValue = (values[middle - 1].add(values[middle])).divideToIntegralValue(new BigDecimal(2));
+            Arrays.sort(values);
 
-        return medianValue.doubleValue();
+            int middle = values.length / 2;
+            BigDecimal medianValue;
+            if (values.length % 2 == 1)
+                medianValue = values[middle];
+            else
+                medianValue = (values[middle - 1].add(values[middle])).divideToIntegralValue(new BigDecimal(2));
+
+            return medianValue.doubleValue();
+        } else {
+            return Double.NaN;
+        }
     }
 
     public double getDeviation(String tradeType) {
@@ -74,7 +82,6 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
 
-
     public Trades getFormattedData() {
         return new Trades()
                 .setLargest_buy(getBiggestTrades(TradeType.BUY.getValue(), 5))
@@ -85,5 +92,18 @@ public class TradeDataServiceImpl implements TradeDataService {
                 .setMedian_sell(getMedian(TradeType.SELL.getValue()))
                 .setDeviation_buy(getDeviation(TradeType.BUY.getValue()))
                 .setDeviation_sell(getDeviation(TradeType.SELL.getValue()));
+    }
+
+    private Stream<TradeItem> filterTrades(String tradeType) {
+        if (isValid(tradeType)) {
+            return trades.stream()
+                    .filter((item -> item.getType().equals(tradeType)));
+        } else {
+            return null;
+        }
+    }
+
+    private boolean isValid(String tradeType) {
+        return tradeType.equals(TradeType.SELL.getValue()) || tradeType.equals(TradeType.BUY.getValue());
     }
 }
