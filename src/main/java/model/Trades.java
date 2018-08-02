@@ -3,7 +3,6 @@ package model;
 import constants.TradeType;
 
 import java.util.Collection;
-import java.util.Objects;
 
 public class Trades {
     private Collection<TradeItem> largest_sell;
@@ -107,25 +106,5 @@ public class Trades {
     public Trades setDeviation_buy(double deviation_buy) {
         this.deviation_buy = deviation_buy;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Trades trades = (Trades) o;
-        return Objects.equals(getLargest_sell(), trades.getLargest_sell()) &&
-                Objects.equals(getLargest_buy(), trades.getLargest_buy()) &&
-                Objects.equals(getAverage_sell(), trades.getAverage_sell()) &&
-                Objects.equals(getAverage_buy(), trades.getAverage_buy()) &&
-                Objects.equals(getMedian_sell(), trades.getMedian_sell()) &&
-                Objects.equals(getMedian_buy(), trades.getMedian_buy()) &&
-                Objects.equals(getDeviation_sell(), trades.getDeviation_sell()) &&
-                Objects.equals(getDeviation_buy(), trades.getDeviation_buy());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getLargest_sell(), getLargest_buy(), getAverage_sell(), getAverage_buy(), getMedian_sell(), getMedian_buy(), getDeviation_sell(), getDeviation_buy());
     }
 }
