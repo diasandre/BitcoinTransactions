@@ -12,12 +12,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Collection;
-import java.util.Map;
 
 @Path("/data")
-public class DataEndpointImpl implements DataEndpoint{
+public class DataEndpointImpl implements DataEndpoint {
     private final static Gson gson = new Gson();
 
     private TradeDataService tradeDataService;
@@ -25,18 +25,18 @@ public class DataEndpointImpl implements DataEndpoint{
 
     public DataEndpointImpl() {
         try {
-            Trades read = new ApiConsumer().read();
-            this.tradeDataService = new TradeDataServiceImpl(read);
+            Collection<TradeItem> trades = new ApiConsumer().read();
+            this.tradeDataService = new TradeDataServiceImpl(trades);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getData() {
-        Map<String, Object> content = tradeDataService.getFormattedData();
-        return Response.status(200).entity(gson.toJson(content)).build();
+        Trades trades = tradeDataService.getFormattedData();
+        return Response.status(200).entity(gson.toJson(trades)).build();
     }
 
     @GET
@@ -48,12 +48,37 @@ public class DataEndpointImpl implements DataEndpoint{
 
     @GET
     @Path("/{type}/largest/{limit}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getLargestTrades(@PathParam("limit") int limit,
-                                    @PathParam("type") String type) {
+                                     @PathParam("type") String type) {
+        return getLargestTradesResponse(limit, type);
+
+    }
+
+    @GET
+    @Path("/{type}/largest")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLargestTrades(@PathParam("type") String type) {
+        return getLargestTradesResponse(5, type);
+
+    }
+
+    private Response getLargestTradesResponse(int limit, String type) {
         Collection<TradeItem> biggestTrades = tradeDataService.getBiggestTrades(type, limit);
+
+        if (biggestTrades == null) {
+            return Response.status(204).entity(null).build();
+        }
+
         String content = gson.toJson(biggestTrades);
         return Response.status(200).entity(content).build();
+    }
+
+    @GET
+    @Path("/{type}/average")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response getAverage(@PathParam("type") String type) {
+        return Response.status(200).entity(tradeDataService.getAverage(type)).build();
 
     }
 }

@@ -1,13 +1,14 @@
 package service;
 
 import model.TradeItem;
+import model.Trades;
 
 import java.util.Collection;
-import java.util.Map;
 
 public interface TradeDataService {
 
+    Trades getFormattedData();
     Collection<TradeItem> getBiggestTrades(String tradeType, int limit);
-    Map<String, Object> getFormattedData();
+    Double getAverage(String tradeType);
 
 }

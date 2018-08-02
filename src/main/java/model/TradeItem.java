@@ -37,6 +37,10 @@ public class TradeItem {
         return this;
     }
 
+    public BigDecimal getValue(){
+        return getAmount().multiply(getPrice());
+    }
+
     public String getType() {
         return type;
     }
