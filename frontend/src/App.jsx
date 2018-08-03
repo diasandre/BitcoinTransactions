@@ -14,7 +14,7 @@ class App extends React.Component {
 
   componentDidMount() {
     getData().then(response => {
-      this.setState({ data: response.data });
+      return this.setState({ data: response.data });
     });
   }
 

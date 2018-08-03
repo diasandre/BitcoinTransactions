@@ -8,17 +8,15 @@ class Trade extends React.PureComponent {
             <div>
                 <h1 className="trade-name">{this.props.tradeType}</h1>
                 <div>
-                    {generateData(this.props.largest,
-                        this.props.average,
-                        this.props.median,
-                        this.props.deviation)}
+                    {generateData(this.props)}
                 </div>
             </div>
         )
     }
 }
 
-function generateData(largest, average, median, deviation) {
+function generateData(props) {
+    const {largest, average, median, deviation} = props;
     return (
         <div>
             <div>
