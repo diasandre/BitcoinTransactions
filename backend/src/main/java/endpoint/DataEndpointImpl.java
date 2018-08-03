@@ -36,7 +36,7 @@ public class DataEndpointImpl implements DataEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getData() {
         Trades trades = tradeDataService.getFormattedData();
-        return Response.status(200).entity(gson.toJson(trades)).build();
+        return Response.status(200).entity(gson.toJson(trades)).header("Access-Control-Allow-Origin", "*").build();
     }
 
     @GET
