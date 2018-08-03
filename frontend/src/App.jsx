@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './image/bitcoin.png';
-import './App.css';
 import { getData } from "./service/dataService"
-import LargestTrades from './components/largestTrades';
+import Trade from './components/Trade';
+import './index.css';
 
 class App extends React.Component {
   constructor() {
@@ -24,27 +24,26 @@ class App extends React.Component {
         <header className="header">
           <img src={logo} className="logo" alt="logo" />
         </header>
-        <div className="container">
-          <div className="largest">
-            {this.state.data != null ?
-              generateData(this.state.data) :
-              <p>Loading data....</p>}
-          </div>
+        <div>
+          {this.state.data != null ?
+            (<div className="container">
+              <Trade tradeType="buy" largest={this.state.data.largest_buy}
+                average={this.state.data.average_buy}
+                median={this.state.data.median_buy}
+                deviation={this.state.data.deviation_buy} />
+
+              <Trade tradeType="sell" largest={this.state.data.largest_sell}
+                average={this.state.data.average_sell}
+                median={this.state.data.median_sell}
+                deviation={this.state.data.deviation_sell} />
+            </div>) :
+            <p>....</p>
+          }
         </div>
       </div>
     );
   }
-}
 
-function generateData(data) {
-  return (
-    <div>
-      <LargestTrades title="LARGEST SELL TRADES"
-        data={data.largest_sell} />
-      <LargestTrades title="LARGEST BUY TRADES"
-        data={data.largest_buy} />
-    </div>
-  )
 }
 
 export default App;

@@ -7,61 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="905cc22a-dbbb-486f-bb47-0787cd1e6f7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/endpoint/CORSFilter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/artifacts/AndreBitcoin_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/AndreBitcoin_war.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/artifacts/AndreBitcoin_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/AndreBitcoin_war_exploded.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__asm_asm_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_3_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_mashape_unirest_unirest_java_1_4_9.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mashape_unirest_unirest_java_1_4_9.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_sun_jersey_jersey_core_1_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_core_1_8.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_sun_jersey_jersey_server_1_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_server_1_8.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__junit_junit_4_12.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__me_andrz_map_builder_1_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__me_andrz_map_builder_1_0_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_15.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_15.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_8_15.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_8_15.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_commons_commons_math3_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_all_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_all_1_3.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_json_json_20160212.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20160212.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_mockito_mockito_core_2_21_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_21_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.settings/org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.settings/org.eclipse.wst.common.component" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.component" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../.settings/org.eclipse.wst.common.project.facet.core.xml" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../AndreBitcoin.iml" afterPath="$PROJECT_DIR$/AndreBitcoin.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/api/ApiConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/api/ApiConsumer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/constants/TradeType.java" afterPath="$PROJECT_DIR$/src/main/java/constants/TradeType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/endpoint/DataEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/endpoint/DataEndpoint.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/endpoint/DataEndpointImpl.java" afterPath="$PROJECT_DIR$/src/main/java/endpoint/DataEndpointImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/model/TradeItem.java" afterPath="$PROJECT_DIR$/src/main/java/model/TradeItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/model/Trades.java" afterPath="$PROJECT_DIR$/src/main/java/model/Trades.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/service/TradeDataService.java" afterPath="$PROJECT_DIR$/src/main/java/service/TradeDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/service/TradeDataServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/TradeDataServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/test/TradeDataServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/test/TradeDataServiceTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/java/test/TradeTestData.java" afterPath="$PROJECT_DIR$/src/main/java/test/TradeTestData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../target/andreBitcoin/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/andreBitcoin/META-INF/MANIFEST.MF" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../target/andreBitcoin/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/andreBitcoin/WEB-INF/web.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../frontend/src/App.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/package-lock.json" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/package.json" afterPath="$PROJECT_DIR$/../frontend/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" afterPath="$PROJECT_DIR$/../frontend/src/App.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/src/index.css" afterPath="$PROJECT_DIR$/../frontend/src/index.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -212,7 +162,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -624,7 +574,7 @@
     <option name="totallyTimeSpent" value="49098000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

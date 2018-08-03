@@ -23,11 +23,17 @@ body {
   margin: 0 auto;
 }
 
-.largest{
+.trade-name {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.largest {
   padding: 10px;
 }
 
-.largest .item{
+.largest .item {
   width: 17%;
   background: #fff;
   border: 1px solid #ccc;
@@ -37,8 +43,22 @@ body {
   padding: 10px;
 }
 
-.largest .item .tid{
+.data-item {
+  width: 30%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+}
+
+.largest .item .tid {
   font-weight: bold;
   text-align: center;
   margin-top: 0;
+}
+
+.section-title{
+  text-align: center;
 }

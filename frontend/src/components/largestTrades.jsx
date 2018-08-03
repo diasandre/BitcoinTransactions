@@ -7,10 +7,12 @@ class LargestTrades extends React.PureComponent {
                 <p className="section-title">
                     {this.props.title}
                 </p>
+                <div className="largest" >
                 {
                     this.props.data.map(
                         item => createTradeItem(item))
                 }
+                </div>
             </div>
         )
     }
