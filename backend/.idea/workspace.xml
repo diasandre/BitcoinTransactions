@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="905cc22a-dbbb-486f-bb47-0787cd1e6f7e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../frontend/src/App.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/package-lock.json" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/package.json" afterPath="$PROJECT_DIR$/../frontend/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" afterPath="$PROJECT_DIR$/../frontend/src/App.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/src/index.css" afterPath="$PROJECT_DIR$/../frontend/src/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/src/components/DataItem.jsx" afterPath="$PROJECT_DIR$/../frontend/src/components/DataItem.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,17 +40,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataEndpointImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataEndpointImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/endpoint/DataEndpointImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="-834">
               <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -534,7 +530,7 @@
       <workItem from="1533221786694" duration="13679000" />
       <workItem from="1533245671723" duration="9416000" />
       <workItem from="1533262162786" duration="2098000" />
-      <workItem from="1533306748817" duration="3876000" />
+      <workItem from="1533306748817" duration="3886000" />
     </task>
     <servers />
   </component>
@@ -571,7 +567,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49098000" />
+    <option name="totallyTimeSpent" value="49108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -998,14 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/endpoint/DataEndpointImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/endpoint/CORSFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -1020,6 +1008,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/endpoint/DataEndpointImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-834">
+          <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
           <folding />
         </state>
       </provider>

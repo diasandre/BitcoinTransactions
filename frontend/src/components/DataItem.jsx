@@ -5,7 +5,8 @@ class DataItem extends React.PureComponent{
     render(){
         return (
             <div className="data-item"> 
-                {this.props.title + " - " + this.props.data}
+            <p className="title">{this.props.title}</p>
+            <p>{this.props.data}</p>
             </div>
         )
     }
