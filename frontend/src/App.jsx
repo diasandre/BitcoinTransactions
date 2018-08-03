@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './image/bitcoin.png';
 import './App.css';
 import { getData } from "./service/dataService"
+import LargestTrades from './components/largestTrades';
 
 class App extends React.Component {
   constructor() {
@@ -34,44 +35,14 @@ class App extends React.Component {
     );
   }
 }
+
 function generateData(data) {
   return (
     <div>
-      <p className="section-title">
-        LARGEST SELL TRADES
-    </p>
-      <div>
-        {
-          data.largest_sell.map(
-            item => createTradeItem(item))
-        }
-      </div>
-      <p className="section-title">
-        LARGEST BUY TRADES
-  </p>
-      <div>
-        {
-          data.largest_buy.map(
-            item => createTradeItem(item))
-        }
-      </div>
-    </div>
-  )
-}
-
-
-function createTradeItem(item) {
-  return (
-    <div className="item" key={item.tid}>
-      <p className="tid">
-        {item.tid}
-      </p>
-      <p>
-        Price: {item.price}
-      </p>
-      <p>
-        Amount: {item.amount}
-      </p>
+      <LargestTrades title="LARGEST SELL TRADES"
+        data={data.largest_sell} />
+      <LargestTrades title="LARGEST BUY TRADES"
+        data={data.largest_buy} />
     </div>
   )
 }
