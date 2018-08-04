@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import numeral from 'numeral';
 
 class LargestTrades extends React.PureComponent {
     render() {
@@ -8,10 +10,10 @@ class LargestTrades extends React.PureComponent {
                     {this.props.title}
                 </p>
                 <div className="largest" >
-                {
-                    this.props.data.map(
-                        item => createTradeItem(item))
-                }
+                    {
+                        this.props.data.map(
+                            item => createTradeItem(item))
+                    }
                 </div>
             </div>
         )
@@ -24,8 +26,12 @@ function createTradeItem(item) {
             <p className="tid">
                 {item.tid}
             </p>
+            <p className="date">
+                {moment.unix(item.date).format('DD/MM/YYYY - HH:mm')}
+            </p>
+            <hr/>
             <p>
-                Price: {item.price}
+                Price: {numeral(item.price).format('$0.0,0')}
             </p>
             <p>
                 Amount: {item.amount}

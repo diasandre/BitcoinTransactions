@@ -24,7 +24,7 @@ function generateData(props) {
                     title="LARGEST TRADES"
                     data={largest} />
             </div>
-            <div>
+            <div className="info">
                 <DataItem title="Average" data={average} />
                 <DataItem title="Median" data={median} />
                 <DataItem title="Standard Deviation" data={deviation} />
