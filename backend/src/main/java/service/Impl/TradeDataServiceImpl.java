@@ -1,32 +1,29 @@
 package service.Impl;
 
 import constants.TradeType;
-import model.TradeItem;
-import model.Trades;
+import me.andrz.builder.map.MapBuilder;
+import model.Trade;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import service.TradeDataService;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TradeDataServiceImpl implements TradeDataService {
-    private Collection<TradeItem> trades;
+    private Collection<Trade> trades;
 
-    public TradeDataServiceImpl(Collection<TradeItem> trades) {
+    public TradeDataServiceImpl(Collection<Trade> trades) {
         this.trades = trades;
     }
 
-    public Collection<TradeItem> getBiggestTrades(String tradeType, int limit) {
-        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+    public Collection<Trade> getBiggestTrades(String tradeType, int limit) {
+        Stream<Trade> filteredTrades = filterTrades(tradeType);
         if (filteredTrades != null) {
             return filteredTrades
-                    .sorted(Comparator.comparing(TradeItem::getValue).reversed())
+                    .sorted(Comparator.comparing(Trade::getValue).reversed())
                     .limit(limit)
                     .collect(Collectors.toList());
         } else {
@@ -35,7 +32,7 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public double getAverage(String tradeType) {
-        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+        Stream<Trade> filteredTrades = filterTrades(tradeType);
         if (filteredTrades != null) {
             return filteredTrades
                     .mapToDouble(item -> item.getValue().doubleValue())
@@ -47,10 +44,10 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public double getMedian(String tradeType) {
-        Stream<TradeItem> filteredTrades = filterTrades(tradeType);
+        Stream<Trade> filteredTrades = filterTrades(tradeType);
         if (filteredTrades != null) {
             List<BigDecimal> mappedTrades = filteredTrades
-                    .map(TradeItem::getValue)
+                    .map(Trade::getValue)
                     .collect(Collectors.toList());
 
             BigDecimal[] values = mappedTrades.toArray(new BigDecimal[mappedTrades.size()]);
@@ -83,19 +80,20 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
 
-    public Trades getFormattedData() {
-        return new Trades()
-                .setLargest_buy(getBiggestTrades(TradeType.BUY.getValue(), 5))
-                .setLargest_sell(getBiggestTrades(TradeType.SELL.getValue(), 5))
-                .setAverage_buy(getAverage(TradeType.BUY.getValue()))
-                .setAverage_sell(getAverage(TradeType.SELL.getValue()))
-                .setMedian_buy(getMedian(TradeType.BUY.getValue()))
-                .setMedian_sell(getMedian(TradeType.SELL.getValue()))
-                .setDeviation_buy(getDeviation(TradeType.BUY.getValue()))
-                .setDeviation_sell(getDeviation(TradeType.SELL.getValue()));
+    public Map<String, Object> getFormattedData() {
+        return new MapBuilder<String, Object>()
+                .p("largest_sell", getBiggestTrades(TradeType.SELL.getValue(), 5))
+                .p("largest_buy", getBiggestTrades(TradeType.BUY.getValue(), 5))
+                .p("average_sell", getAverage(TradeType.SELL.getValue()))
+                .p("average_buy", getAverage(TradeType.BUY.getValue()))
+                .p("median_sell", getMedian(TradeType.BUY.getValue()))
+                .p("median_buy", getMedian(TradeType.BUY.getValue()))
+                .p("deviation_sell", getDeviation(TradeType.BUY.getValue()))
+                .p("deviation_buy", getDeviation(TradeType.BUY.getValue()))
+                .build();
     }
 
-    private Stream<TradeItem> filterTrades(String tradeType) {
+    private Stream<Trade> filterTrades(String tradeType) {
         if (isValid(tradeType)) {
             return trades.stream()
                     .filter((item -> item.getType().equals(tradeType)));

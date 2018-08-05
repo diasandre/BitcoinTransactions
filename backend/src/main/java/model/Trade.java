@@ -3,7 +3,7 @@ package model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class TradeItem {
+public class Trade {
     private Long date;
     private BigDecimal amount;
     private BigDecimal price;
@@ -14,7 +14,7 @@ public class TradeItem {
         return date;
     }
 
-    public TradeItem setDate(Long date) {
+    public Trade setDate(Long date) {
         this.date = date;
         return this;
     }
@@ -23,7 +23,7 @@ public class TradeItem {
         return amount;
     }
 
-    public TradeItem setAmount(BigDecimal amount) {
+    public Trade setAmount(BigDecimal amount) {
         this.amount = amount;
         return this;
     }
@@ -32,7 +32,7 @@ public class TradeItem {
         return price;
     }
 
-    public TradeItem setPrice(BigDecimal price) {
+    public Trade setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -45,7 +45,7 @@ public class TradeItem {
         return type;
     }
 
-    public TradeItem setType(String type) {
+    public Trade setType(String type) {
         this.type = type;
         return this;
     }
@@ -54,7 +54,7 @@ public class TradeItem {
         return tid;
     }
 
-    public TradeItem setTid(Long tid) {
+    public Trade setTid(Long tid) {
         this.tid = tid;
         return this;
     }
@@ -63,12 +63,12 @@ public class TradeItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TradeItem tradeItem = (TradeItem) o;
-        return Objects.equals(getDate(), tradeItem.getDate()) &&
-                Objects.equals(getAmount(), tradeItem.getAmount()) &&
-                Objects.equals(getPrice(), tradeItem.getPrice()) &&
-                Objects.equals(getType(), tradeItem.getType()) &&
-                Objects.equals(getTid(), tradeItem.getTid());
+        Trade trade = (Trade) o;
+        return Objects.equals(getDate(), trade.getDate()) &&
+                Objects.equals(getAmount(), trade.getAmount()) &&
+                Objects.equals(getPrice(), trade.getPrice()) &&
+                Objects.equals(getType(), trade.getType()) &&
+                Objects.equals(getTid(), trade.getTid());
     }
 
     @Override

@@ -1,7 +1,7 @@
 package service.Impl;
 
 import me.andrz.builder.map.MapBuilder;
-import model.TradeItem;
+import model.Trade;
 import service.ChartDataService;
 
 import java.math.BigDecimal;
@@ -12,22 +12,22 @@ import java.util.stream.Collectors;
 
 public class ChartDataServiceImpl implements ChartDataService {
 
-    private Collection<TradeItem> trades;
+    private Collection<Trade> trades;
 
-    public ChartDataServiceImpl(Collection<TradeItem> trades) {
+    public ChartDataServiceImpl(Collection<Trade> trades) {
         this.trades = trades;
     }
 
     private Collection<BigDecimal> getPrice(String tradeType) {
         return this.trades.stream()
                 .filter(item -> item.getType().equals(tradeType))
-                .map(TradeItem::getPrice).collect(Collectors.toList());
+                .map(Trade::getPrice).collect(Collectors.toList());
     }
 
     private Collection<Long> getDate(String tradeType) {
         return this.trades.stream()
                 .filter(item -> item.getType().equals(tradeType))
-                .map(TradeItem::getDate).collect(Collectors.toList());
+                .map(Trade::getDate).collect(Collectors.toList());
     }
 
     public Map<String, Object> getChartData(String tradeType) {
@@ -45,7 +45,7 @@ public class ChartDataServiceImpl implements ChartDataService {
 
     //GENERATED
 
-    public Collection<TradeItem> getTrades() {
+    public Collection<Trade> getTrades() {
         return trades;
     }
 }

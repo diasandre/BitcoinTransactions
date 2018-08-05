@@ -1,15 +1,16 @@
 package test;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
 import constants.TradeType;
-import model.TradeItem;
+import model.Trade;
 import org.junit.Before;
 import org.junit.Test;
-import service.TradeDataService;
 import service.Impl.TradeDataServiceImpl;
+import service.TradeDataService;
 
 import java.util.Collection;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class TradeDataServiceTest {
@@ -22,10 +23,25 @@ public class TradeDataServiceTest {
     }
 
     @Test
-    public void getBiggestTrades() throws UnirestException {
-        Collection<TradeItem> biggestTrades = tradeDataService.getBiggestTrades(TradeType.BUY.getValue(), 5);
-        Collection<TradeItem> expectedTrades = TradeTestData.tradeItens(5, 10);
+    public void getBiggestTrades() {
+        Collection<Trade> actual = tradeDataService.getBiggestTrades(TradeType.BUY.getValue(), 5);
+        Collection<Trade> expected = TradeTestData.tradeItens(5, 10);
 
-        assertTrue(biggestTrades.containsAll(expectedTrades));
+        assertTrue(expected.containsAll(actual));
+    }
+
+    @Test
+    public void getAverage() {
+        assertThat(tradeDataService.getAverage(TradeType.BUY.getValue()), is(55.0));
+    }
+
+    @Test
+    public void getMedian() {
+        assertThat(tradeDataService.getMedian(TradeType.BUY.getValue()), is(55.0));
+    }
+
+    @Test
+    public void getDeviation() {
+        assertThat(tradeDataService.getDeviation(TradeType.BUY.getValue()), is(30.276503540974915));
     }
 }

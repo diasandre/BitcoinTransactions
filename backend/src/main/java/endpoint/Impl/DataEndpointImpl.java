@@ -4,10 +4,9 @@ import api.ApiConsumer;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import endpoint.DataEndpoint;
-import model.TradeItem;
-import model.Trades;
-import service.TradeDataService;
+import model.Trade;
 import service.Impl.TradeDataServiceImpl;
+import service.TradeDataService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import java.util.Collection;
+import java.util.Map;
 
 @Path("/data")
 public class DataEndpointImpl implements DataEndpoint {
@@ -27,7 +27,7 @@ public class DataEndpointImpl implements DataEndpoint {
 
     public DataEndpointImpl() {
         try {
-            Collection<TradeItem> trades = new ApiConsumer().read();
+            Collection<Trade> trades = new ApiConsumer().read();
             this.tradeDataService = new TradeDataServiceImpl(trades);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -37,8 +37,10 @@ public class DataEndpointImpl implements DataEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getData() {
-        Trades trades = tradeDataService.getFormattedData();
-        return ResponseBuilder().entity(gson.toJson(trades)).build();
+        Map<String, Object> content = tradeDataService.getFormattedData();
+        return ResponseBuilder()
+                .entity(gson.toJson(content))
+                .build();
     }
 
     @GET
@@ -66,7 +68,7 @@ public class DataEndpointImpl implements DataEndpoint {
     }
 
     private Response getLargestTradesResponse(int limit, String type) {
-        Collection<TradeItem> biggestTrades = tradeDataService.getBiggestTrades(type, limit);
+        Collection<Trade> biggestTrades = tradeDataService.getBiggestTrades(type, limit);
 
         if (biggestTrades == null) {
             return Response.status(204).entity(null).build();
@@ -103,7 +105,7 @@ public class DataEndpointImpl implements DataEndpoint {
 
     }
 
-    private ResponseBuilder ResponseBuilder(){
+    private ResponseBuilder ResponseBuilder() {
         return Response.status(200).header("Access-Control-Allow-Origin", "*");
     }
 }

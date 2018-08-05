@@ -4,7 +4,7 @@ import api.ApiConsumer;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import endpoint.DataEndpoint;
-import model.TradeItem;
+import model.Trade;
 import service.ChartDataService;
 import service.Impl.ChartDataServiceImpl;
 
@@ -24,7 +24,7 @@ public class ChartEndpointImpl implements DataEndpoint {
 
     public ChartEndpointImpl() {
         try {
-            Collection<TradeItem> trades = new ApiConsumer().read();
+            Collection<Trade> trades = new ApiConsumer().read();
             this.chartDataService = new ChartDataServiceImpl(trades);
         } catch (UnirestException e) {
             e.printStackTrace();
