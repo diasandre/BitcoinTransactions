@@ -1,7 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { getChartData, getChartDataDefault } from "./../service/dataService"
-import moment from 'moment';
 
 import { formatDate } from './../service/formatService'
 

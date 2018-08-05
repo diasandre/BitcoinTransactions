@@ -21,7 +21,10 @@ class App extends React.Component {
     super();
     this.state = {
       data: null,
-      error: null,
+      error: {
+        text: "",
+        show: false
+      },
       dates: {
         fromDate: 1501871369,
         toDate: 1501891200,
@@ -34,12 +37,20 @@ class App extends React.Component {
     getDataDefault().then(response => {
       this.setState({ data: response.data });
     }).catch(error => {
-      this.setState({ error: "Erro de conexão com o backend" });
+      this.setState({
+        error: {
+          text: "Erro de conexão com o backend",
+          show: true
+        }
+      });
     });
   }
 
   fromDateChange(date) {
     this.setState({
+      error: {
+        show: false
+      },
       dates: {
         ...this.state.dates,
         update: false,
@@ -50,6 +61,9 @@ class App extends React.Component {
 
   toDateChange(date) {
     this.setState({
+      error: {
+        show: false
+      },
       dates: {
         ...this.state.dates,
         update: false,
@@ -61,8 +75,13 @@ class App extends React.Component {
   onClick() {
     const { dates } = this.state;
 
-    if (numeral(dates.toDate) >= numeral(dates.fromDate) || dates.fromDate === dates.toDate) {
-      this.setState({ error: "As datas estão inválidas" });
+    if (numeral(dates.fromDate).value() >= numeral(dates.toDate).value()) {
+      this.setState({
+        error: {
+          text: "As datas estão inválidas",
+          show: true
+        }
+      });
     } else {
       getData(dates.fromDate, dates.toDate).then(response => {
         this.setState({
@@ -114,7 +133,7 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <p className="error">{this.state.error}</p>
+              {this.state.error.show ? <p className="error">{this.state.error.text}</p> : null}
 
               <Trade tradeType="buy" largest={this.state.data.largest_buy}
                 average={this.state.data.average_buy}
@@ -128,7 +147,7 @@ class App extends React.Component {
                 deviation={this.state.data.deviation_sell}
                 dates={this.state.dates} />
             </div>) :
-            <p className="error">{this.state.error}</p>
+            this.state.error.show ? <p className="error">{this.state.error.text}</p> : null
           }
         </div>
       </div>
