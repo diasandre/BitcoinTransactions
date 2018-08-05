@@ -1,12 +1,13 @@
-package endpoint;
+package endpoint.Impl;
 
 import api.ApiConsumer;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import endpoint.DataEndpoint;
 import model.TradeItem;
 import model.Trades;
 import service.TradeDataService;
-import service.TradeDataServiceImpl;
+import service.Impl.TradeDataServiceImpl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,6 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import java.util.Collection;
 
 @Path("/data")
@@ -36,13 +38,13 @@ public class DataEndpointImpl implements DataEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getData() {
         Trades trades = tradeDataService.getFormattedData();
-        return Response.status(200).entity(gson.toJson(trades)).header("Access-Control-Allow-Origin", "*").build();
+        return ResponseBuilder().entity(gson.toJson(trades)).build();
     }
 
     @GET
     @Path("/status")
     public Response status() {
-        return Response.status(200).entity("API is working :) :)").build();
+        return ResponseBuilder().entity("API is working :) :)").build();
 
     }
 
@@ -71,7 +73,7 @@ public class DataEndpointImpl implements DataEndpoint {
         }
 
         String content = gson.toJson(biggestTrades);
-        return Response.status(200).entity(content).build();
+        return ResponseBuilder().entity(content).build();
     }
 
     @GET
@@ -79,7 +81,7 @@ public class DataEndpointImpl implements DataEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAverage(@PathParam("type") String type) {
         String content = gson.toJson(tradeDataService.getAverage(type));
-        return Response.status(200).entity(content).build();
+        return ResponseBuilder().entity(content).build();
 
     }
 
@@ -88,7 +90,7 @@ public class DataEndpointImpl implements DataEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMedian(@PathParam("type") String type) {
         String content = gson.toJson(tradeDataService.getMedian(type));
-        return Response.status(200).entity(content).build();
+        return ResponseBuilder().entity(content).build();
 
     }
 
@@ -97,7 +99,11 @@ public class DataEndpointImpl implements DataEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDeviation(@PathParam("type") String type) {
         String content = gson.toJson(tradeDataService.getDeviation(type));
-        return Response.status(200).entity(content).build();
+        return ResponseBuilder().entity(content).build();
 
+    }
+
+    private ResponseBuilder ResponseBuilder(){
+        return Response.status(200).header("Access-Control-Allow-Origin", "*");
     }
 }

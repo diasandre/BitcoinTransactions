@@ -8,13 +8,16 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: null
+      data: null,
+      error: null
     }
   }
 
   componentDidMount() {
     getData().then(response => {
-      return this.setState({ data: response.data });
+      this.setState({ data: response.data });
+    }).catch(error => {
+      this.setState({ error: "Erro de conexão com o backend" });
     });
   }
 
@@ -37,7 +40,7 @@ class App extends React.Component {
                 median={this.state.data.median_sell}
                 deviation={this.state.data.deviation_sell} />
             </div>) :
-            <p>....</p>
+            <p className="error">{this.state.error}</p>
           }
         </div>
       </div>

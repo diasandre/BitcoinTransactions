@@ -19,7 +19,6 @@ body {
 
 .container {
   width: 80%;
-  height: 1000px;
   margin: 0 auto;
 }
 
@@ -72,4 +71,9 @@ body {
   font-weight: bold;
   text-align: center;
   margin-top: 0;
+}
+
+.error {
+  font-weight: bold;
+  text-align: center;
 }

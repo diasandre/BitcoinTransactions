@@ -6,7 +6,7 @@ import model.TradeItem;
 import org.junit.Before;
 import org.junit.Test;
 import service.TradeDataService;
-import service.TradeDataServiceImpl;
+import service.Impl.TradeDataServiceImpl;
 
 import java.util.Collection;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import LargestTrades from "./largestTrades"
 import DataItem from "./DataItem";
+import Chart from "./Chart";
 
 class Trade extends React.PureComponent {
     render() {
@@ -16,9 +17,10 @@ class Trade extends React.PureComponent {
 }
 
 function generateData(props) {
-    const {largest, average, median, deviation} = props;
+    const {largest, average, median, deviation, tradeType} = props;
     return (
         <div>
+            <Chart tradeType={tradeType} />
             <div>
                 <LargestTrades
                     title="LARGEST TRADES"
