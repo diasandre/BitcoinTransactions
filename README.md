@@ -28,6 +28,7 @@ Storybook:
 
 <p> Endereço base do backend: http://localhost:8080/endpoint/ </p>
 <p> Necessário uso do Tomcat</p>
+<p> Os dados iniciais são fromDate(1501871369) e toDate(1501891200)</p>
 
 <h2>GET</h2>
 
