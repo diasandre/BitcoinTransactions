@@ -39,7 +39,7 @@ class App extends React.Component {
     }).catch(error => {
       this.setState({
         error: {
-          text: "Erro de conexão com o backend",
+          text: "Connection error",
           show: true
         }
       });
@@ -78,7 +78,7 @@ class App extends React.Component {
     if (numeral(dates.fromDate).value() >= numeral(dates.toDate).value()) {
       this.setState({
         error: {
-          text: "As datas estão inválidas",
+          text: "Invalid dates",
           show: true
         }
       });
@@ -92,7 +92,7 @@ class App extends React.Component {
           }
         });
       }).catch(error => {
-        this.setState({ error: "Erro de conexão com o backend" });
+        this.setState({ error: "Connection error" });
       });
     }
   }
