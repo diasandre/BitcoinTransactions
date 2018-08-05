@@ -15,7 +15,10 @@
 
 <p>
 Para rodar:
-<pre> npm start </pre>
+<pre> 
+<span>npm install<span> 
+<span>npm start<span> 
+</pre>
 </p>
 
 <p>
