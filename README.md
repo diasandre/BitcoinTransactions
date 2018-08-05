@@ -23,14 +23,83 @@ Storybook:
 <pre> npm run storybook </pre>
 </p>
 
+<p> Endereço base do backend: http://localhost:8080/endpoint/ </p>
+<p> Necessário uso do Tomcat</p>
+
 <h2>GET</h2>
 
-<h3>Maiores transações</h3>
+<h3> Status </h3>
+<pre>
+/data/status
+</pre>
+
+<h3> Dados </h3>
 <ul>
-  <li>type: buy ou sell</li>
-  <li>limit: número de itens</li>
+  <li>Cinco maiores transações de venda e compra</li>
+  <li>Média</li>
+  <li>Mediana</li>
+  <li>Desvio padrão corrigido</li>
+</ul>
+
+<ul>
+  <li>fromDate: data inicial de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com toDate</li>
+  <li>toDate: data final de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com fromDate</li>
 </ul>
 
 <pre>
-/{type}/largest/{limit}
+/data/{fromDate}/{toDate}
 </pre>
+
+<h3>Maiores transações</h3>
+<ul>
+  <li>type: buy ou sell - String (Obrigatório)</li>
+  <li>limit: número de itens - Integer - valor default é 5</li>
+  <li>fromDate: data inicial de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com toDate</li>
+  <li>toDate: data final de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com fromDate</li>
+</ul>
+
+<pre>
+/data/{fromDate}/{toDate}/{type}/largest/{limit}
+</pre>
+
+<h3>Média de gastos</h3>
+<ul>
+<li>type: buy ou sell - String (Obrigatório)</li>
+</ul>
+
+<pre>
+/data/{type}/average
+</pre>
+
+<h3>Mediana dos gastos</h3>
+<ul>
+<li>type: buy ou sell - String (Obrigatório)</li>
+</ul>
+
+<pre>
+/data/{type}/median
+</pre>
+
+<h3>Desvio padrão corrigido dos gastos</h3>
+<ul>
+  <li>type: buy ou sell - String (Obrigatório)</li>
+</ul>
+
+<pre>
+/data/{type}/deviation
+</pre>
+
+<h3>ChartJS configurações</h3>
+<ul>
+  <li>type: buy ou sell - String (Obrigatório)</li>
+  <li>fromDate: data inicial de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com toDate</li>
+  <li>toDate: data final de pesquisa dos dados em timestamp - Long - deve ser usado em conjunto com fromDate</li>
+</ul>
+
+<pre>
+/chart/{fromDate}/{toDate}/{type}
+</pre>
+
+<h2>Problemas conhecidos </h2>
+
+<p> A API somente retorna mil dados por consulta e existem mais de mil transações por dia portanto somente serão retornados 1000 transações apartir do fromDate</p>
