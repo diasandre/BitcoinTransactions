@@ -64,7 +64,7 @@ class Chart extends React.Component {
         return (
             <div>
                 {
-                    this.state.data != null ?
+                    this.state.data !== null ?
                         <Line
                             data={this.state.data}
                             height={300}

@@ -104,7 +104,7 @@ class App extends React.Component {
           <img src={logo} className="logo" alt="logo" />
         </header>
         <div>
-          {this.state.data != null ?
+          {this.state.data !== null ?
             (<div className="container">
               <div className="date-picker">
                 <div className="item">
