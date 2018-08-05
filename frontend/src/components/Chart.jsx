@@ -8,7 +8,6 @@ class Chart extends React.Component {
     constructor() {
         super();
         this.state = {
-            redraw: false,
             dates: {
                 fromDate: null,
                 toDate: null
@@ -52,7 +51,10 @@ class Chart extends React.Component {
 
                     return chartData;
                 }).then(content => {
-                    this.setState({ data: content })
+                    this.setState({
+                        data: content,
+                        dates: dates,
+                    })
                 });
             }
         }
