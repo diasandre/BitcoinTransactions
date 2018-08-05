@@ -2,9 +2,7 @@ package endpoint.Impl;
 
 import api.ApiConsumer;
 import com.google.gson.Gson;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import endpoint.DataEndpoint;
-import model.Trade;
 import service.ChartDataService;
 import service.Impl.ChartDataServiceImpl;
 
@@ -14,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Collection;
 import java.util.Map;
 
 @Path("/chart")
@@ -23,18 +20,30 @@ public class ChartEndpointImpl implements DataEndpoint {
     private ChartDataService chartDataService;
 
     public ChartEndpointImpl() {
-        try {
-            Collection<Trade> trades = new ApiConsumer().read();
-            this.chartDataService = new ChartDataServiceImpl(trades);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
+        this.chartDataService = new ChartDataServiceImpl(new ApiConsumer().read());
     }
 
     @GET
     @Path("/{type}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPrice(@PathParam("type") String type) {
+        Map<String, Object> chartData = chartDataService.getChartData(type);
+
+        String content = gson.toJson(chartData);
+
+        return ResponseBuilder()
+                .entity(content).build();
+
+    }
+
+    @GET
+    @Path("/{fromDate}/{toDate}/{type}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPrice(
+            @PathParam("fromDate") Long fromDate,
+            @PathParam("toDate") Long toDate,
+            @PathParam("type") String type) {
+        chartDataService.onChangeTime(fromDate, toDate);
         Map<String, Object> chartData = chartDataService.getChartData(type);
 
         String content = gson.toJson(chartData);
