@@ -1,5 +1,6 @@
 package service.Impl;
 
+import api.ApiConsumer;
 import constants.TradeType;
 import me.andrz.builder.map.MapBuilder;
 import model.Trade;
@@ -32,6 +33,10 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public double getAverage(String tradeType) {
+        if(trades.isEmpty()){
+            return Double.NaN;
+        }
+
         Stream<Trade> filteredTrades = filterTrades(tradeType);
         if (filteredTrades != null) {
             return filteredTrades
@@ -44,6 +49,10 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public double getMedian(String tradeType) {
+        if(trades.isEmpty()){
+            return Double.NaN;
+        }
+
         Stream<Trade> filteredTrades = filterTrades(tradeType);
         if (filteredTrades != null) {
             List<BigDecimal> mappedTrades = filteredTrades
@@ -68,6 +77,10 @@ public class TradeDataServiceImpl implements TradeDataService {
     }
 
     public double getDeviation(String tradeType) {
+        if(trades.isEmpty()){
+            return Double.NaN;
+        }
+
         StandardDeviation standardDeviation = new StandardDeviation();
         List<Double> collect = trades.stream()
                 .filter((item -> item.getType().equals(tradeType)))
@@ -104,5 +117,10 @@ public class TradeDataServiceImpl implements TradeDataService {
 
     private boolean isValid(String tradeType) {
         return tradeType.equals(TradeType.SELL.getValue()) || tradeType.equals(TradeType.BUY.getValue());
+    }
+
+    public TradeDataServiceImpl onChangeTime(Long fromDate, Long toDate) {
+        this.trades = new ApiConsumer().read(fromDate, toDate);
+        return this;
     }
 }

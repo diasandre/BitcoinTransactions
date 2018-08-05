@@ -1,5 +1,5 @@
 import React from "react";
-import LargestTrades from "./largestTrades"
+import LargestTrades from "./LargestTrades"
 import DataItem from "./DataItem";
 import Chart from "./Chart";
 
@@ -17,10 +17,10 @@ class Trade extends React.PureComponent {
 }
 
 function generateData(props) {
-    const {largest, average, median, deviation, tradeType} = props;
+    const {largest, average, median, deviation, tradeType, dates} = props;
     return (
         <div>
-            <Chart tradeType={tradeType} />
+            <Chart tradeType={tradeType} dates={dates}/>
             <div>
                 <LargestTrades
                     title="LARGEST TRADES"

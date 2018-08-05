@@ -40,4 +40,4 @@ function createTradeItem(item) {
     )
 }
 
-export default LargestTrades
+export default LargestTrades;

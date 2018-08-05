@@ -1,12 +1,18 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { getChartData } from "./../service/dataService"
-import moment from 'moment';
+import { getChartData, getChartDataDefault } from "./../service/dataService"
+
+import { formatDate } from './../service/formatService'
 
 class Chart extends React.Component {
     constructor() {
         super();
         this.state = {
+            redraw: false,
+            dates: {
+                fromDate: null,
+                toDate: null
+            },
             data: {
                 labels: null,
                 datasets: [
@@ -20,41 +26,56 @@ class Chart extends React.Component {
     }
 
     componentDidMount() {
-        getChartData(this.props.tradeType).then(response => {
+        this.setState({ dates: this.props.dates });
+
+        getChartDataDefault(this.props.tradeType).then(response => {
             let chartData = response.data;
 
             chartData.labels = formatDate(chartData.labels);
 
             return chartData;
         }).then(content => {
-            this.setState({data: content})
+            this.setState({ data: content })
         })
+    }
+
+    componentDidUpdate() {
+        const { tradeType, dates } = this.props;
+        const { fromDate, toDate } = this.state.dates;
+
+        if (dates.fromDate !== fromDate || dates.toDate !== toDate) {
+            if (dates.update) {
+                getChartData(dates.fromDate, dates.toDate, tradeType).then(response => {
+                    let chartData = response.data;
+
+                    chartData.labels = formatDate(chartData.labels);
+
+                    return chartData;
+                }).then(content => {
+                    this.setState({ data: content })
+                });
+            }
+        }
     }
 
     render() {
         return (
             <div>
                 {
-                    this.state.data != null ? 
-                    <Line
-                    data={this.state.data}
-                    height={300}
-                    options={{
-                        maintainAspectRatio: false,
-                        elements: { point: { radius: 0 } }
-                    }}
-                /> : "oi"
+                    this.state.data != null ?
+                        <Line
+                            data={this.state.data}
+                            height={300}
+                            options={{
+                                maintainAspectRatio: false,
+                                elements: { point: { radius: 0 } }
+                            }}
+                        /> : <p> No data </p>
                 }
             </div>
         )
     }
 
-}
-
-function formatDate(dates) {
-    return dates.map(date => {
-        return moment.unix(date).format('HH:mm')
-    })
 }
 
 export default Chart;

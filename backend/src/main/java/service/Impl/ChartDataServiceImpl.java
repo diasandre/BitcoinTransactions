@@ -1,5 +1,6 @@
 package service.Impl;
 
+import api.ApiConsumer;
 import me.andrz.builder.map.MapBuilder;
 import model.Trade;
 import service.ChartDataService;
@@ -44,6 +45,11 @@ public class ChartDataServiceImpl implements ChartDataService {
     }
 
     //GENERATED
+
+    public ChartDataServiceImpl onChangeTime(Long fromDate, Long toDate) {
+        this.trades = new ApiConsumer().read(fromDate, toDate);
+        return this;
+    }
 
     public Collection<Trade> getTrades() {
         return trades;

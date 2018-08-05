@@ -28,7 +28,7 @@ body {
   text-transform: uppercase;
 }
 
-.largest, .info {
+.largest, .info, .date-picker {
   padding: 10px;
   display: flex;
 }
@@ -77,3 +77,21 @@ body {
   font-weight: bold;
   text-align: center;
 }
+
+.date-picker .item {
+  width: 40%;
+  text-align: center;
+  display: inline-block;
+}
+
+.date-picker .item h2{
+  margin-bottom: 0;
+}
+
+.date-picker .search {
+  width: 20%;
+  margin-top: 65px;
+  text-align: center;
+  display: inline-block;
+}
+

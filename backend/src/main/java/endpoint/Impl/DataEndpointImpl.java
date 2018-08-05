@@ -2,7 +2,6 @@ package endpoint.Impl;
 
 import api.ApiConsumer;
 import com.google.gson.Gson;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import endpoint.DataEndpoint;
 import model.Trade;
 import service.Impl.TradeDataServiceImpl;
@@ -24,23 +23,8 @@ public class DataEndpointImpl implements DataEndpoint {
 
     private TradeDataService tradeDataService;
 
-
     public DataEndpointImpl() {
-        try {
-            Collection<Trade> trades = new ApiConsumer().read();
-            this.tradeDataService = new TradeDataServiceImpl(trades);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getData() {
-        Map<String, Object> content = tradeDataService.getFormattedData();
-        return ResponseBuilder()
-                .entity(gson.toJson(content))
-                .build();
+        this.tradeDataService = new TradeDataServiceImpl(new ApiConsumer().read());
     }
 
     @GET
@@ -51,12 +35,45 @@ public class DataEndpointImpl implements DataEndpoint {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDataDefault() {
+        Map<String, Object> content = tradeDataService.getFormattedData();
+        return ResponseBuilder()
+                .entity(gson.toJson(content))
+                .build();
+    }
+
+    @GET
+    @Path("/{fromDate}/{toDate}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getData(@PathParam("fromDate") Long fromDate,
+                            @PathParam("toDate") Long toDate) {
+        tradeDataService.onChangeTime(fromDate, toDate);
+        Map<String, Object> content = tradeDataService.getFormattedData();
+        return ResponseBuilder()
+                .entity(gson.toJson(content))
+                .build();
+    }
+
+    @GET
     @Path("/{type}/largest/{limit}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLargestTrades(@PathParam("limit") int limit,
                                      @PathParam("type") String type) {
         return getLargestTradesResponse(limit, type);
 
+    }
+
+    @GET
+    @Path("/{fromDate}/{toDate}/{type}/largest/{limit}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLargestTradesCustom(
+            @PathParam("fromDate") Long fromDate,
+            @PathParam("toDate") Long toDate,
+            @PathParam("limit") int limit,
+            @PathParam("type") String type) {
+        tradeDataService.onChangeTime(fromDate, toDate);
+        return getLargestTradesResponse(limit, type);
     }
 
     @GET
