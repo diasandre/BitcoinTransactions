@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import LargestTrades from './../components/LargestTrades';
 import DataItem from './../components/DataItem';
-import './../index.css';
+import './../css/index.css';
 
 storiesOf('Components', module)
   .add('LargestTrades', () =>
