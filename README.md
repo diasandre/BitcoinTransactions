@@ -51,6 +51,10 @@ Storybook:
 </ul>
 
 <pre>
+/data - retorna com os dados de fromDate e toDate padrão
+</pre>
+
+<pre>
 /data/{fromDate}/{toDate}
 </pre>
 
