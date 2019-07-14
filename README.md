@@ -1,6 +1,6 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Bitcoin.com_logo.png"/>
 
-<h1>andréBITCOIN</h1>
+<h1>BitcoinTransactions</h1>
 
 <a href="https://codebeat.co/projects/github-com-diasduzurf-andrebitcoin-master"><img alt="codebeat badge" src="https://codebeat.co/badges/1311f527-e216-47ef-839f-f9e7086e4941" /></a>
 
